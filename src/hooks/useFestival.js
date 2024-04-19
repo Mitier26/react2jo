@@ -8,6 +8,8 @@ const fetchFestival = (eventStartDate) => {
         eventStartDate,
     };
 
+    console.log(params);
+
     return api.get('/searchFestival1', { params });
 };
 
@@ -15,6 +17,6 @@ export const useFestivalQuery = (eventStartDate) => {
     return useQuery({
         queryKey: ['festival_query', eventStartDate],
         queryFn: () => fetchFestival(eventStartDate),
-        select: (result) => result.data.response.body.items.item,
+        select: (result) => result.data.response.body.items,
     });
 };
