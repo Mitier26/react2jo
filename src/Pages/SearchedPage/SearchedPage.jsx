@@ -29,10 +29,9 @@ const SearchedPage = () => {
     }
 
     const handlePageClick = ({ selected }) => {
-      setDataIs(selected + 1);
-
-        console.log('page', selected);
-    };
+      setPage(selected + 1);
+      console.log('page', selected);
+  };
 
     const SearchItems = dataIs?.response?.body?.items.item;
     console.log('searchItems', SearchItems);
@@ -47,7 +46,7 @@ const SearchedPage = () => {
                 <Row>
                     {SearchItems?.map((campingData, index) => (
                         <Col key={index} lg={6} xs={12} className="w-auto p-3">
-                            <SearchedCampingCard data={campingData} />
+                            <SearchedCampingCard data={campingData} contentId = {campingData.contentId} address = {campingData.facltNm}/>
                         </Col>
                     ))}
                 </Row>
