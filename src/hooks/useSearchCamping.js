@@ -1,16 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
-import api from '../utils/api'
+import campingApi from '../utils/campingApi'
 
-const fetchSearchCamping = ({ keyword }) => {
-   return keyword
-      ? api.get(`/searchList?MobileOS=ETC&MobileApp=AppTest&keyword=${encodeURI(keyword)}&_type=json`)
-      : api.get(`/basedList?MobileOS=ETC&MobileApp=AppTest&_type=json`)
+const fetchSearchCamping = ({ keyword, pageNo }) => {
+   return keyword ? campingApi.get(`/searchList?&pageNo=${pageNo}&keyword=${encodeURI(keyword)}`) : campingApi.get(`/basedList?&pageNo=${pageNo}`)
 }
 
-export const useSearchCampingQuery = ({ keyword, page }) => {
+export const useSearchCampingQuery = ({ keyword, pageNo }) => {
    return useQuery({
-      queryKey: ['camping-search', { keyword }],
-      queryFn: () => fetchSearchCamping({ keyword, page }),
-      select: (result) => result.data.response.body.items.item,
+      queryKey: ['camping-search', { keyword, pageNo }],
+      queryFn: () => fetchSearchCamping({ keyword, pageNo }),
+      select: (result) => result.data,
    })
 }

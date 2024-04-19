@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import AppLayout from './Layout/AppLayout';
@@ -19,32 +19,34 @@ import {userSlice,clearUser} from './reducers/userSlice';
 import Bottom from './Layout/Bottom';
 
 function App() {
-    const [isLogged, setIsLogged] = useState(false);
-    const [LoginTrue,setLoginTrue] = useState(false);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const appAuth = getAuth(app); // firebase auth 인증서 
+   const [isLogged, setIsLogged] = useState(false)
+   const [LoginTrue, setLoginTrue] = useState(false)
+   const navigate = useNavigate()
+   const dispatch = useDispatch()
+   const appAuth = getAuth(app) // firebase auth 인증서
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(appAuth, (user) => {
-            if (user) {
-                //userSlice Update 현재 유저로 상태 업데이트
-                dispatch(userSlice.actions.setUser({
-                    uid: user.uid,
-                    email: user.email,
-                    displayName: user.displayName,
-                    photoURL: user.photoURL
-                }))
-                setIsLogged(true);
-            } else {
-                dispatch(clearUser());
-                setIsLogged(false);
-            }
-        })
-        return () => {
-            unsubscribe(); // 인증해제
-        }
-    }, [appAuth])
+   useEffect(() => {
+      const unsubscribe = onAuthStateChanged(appAuth, (user) => {
+         if (user) {
+            //userSlice Update 현재 유저로 상태 업데이트
+            dispatch(
+               userSlice.actions.setUser({
+                  uid: user.uid,
+                  email: user.email,
+                  displayName: user.displayName,
+                  photoURL: user.photoURL,
+               })
+            )
+            setIsLogged(true)
+         } else {
+            dispatch(clearUser())
+            setIsLogged(false)
+         }
+      })
+      return () => {
+         unsubscribe() // 인증해제
+      }
+   }, [appAuth])
 
 
     return (
@@ -74,4 +76,4 @@ function App() {
     );
 }
 
-export default App;
+export default App
