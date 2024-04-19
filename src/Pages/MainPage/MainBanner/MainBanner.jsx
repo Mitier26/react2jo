@@ -19,7 +19,7 @@ const MainBanner = () => {
         arrows: false,
     };
     const { data, isLoading, isError, error } = useCampingBasedList();
-    console.log(data);
+    // console.log(data);
     if (isLoading) {
         return <Spinner animation="border" variant="warning" />;
     }
@@ -27,7 +27,7 @@ const MainBanner = () => {
         return <Alert>{error.message}</Alert>;
     }
     const CarouselItems = data.response.body.items.item;
-    console.log(CarouselItems);
+    // console.log(CarouselItems);
     return (
         <div className="slider-container slider-area">
             <Slider {...settings} className="slider-item-box">
