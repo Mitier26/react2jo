@@ -16,6 +16,7 @@ import app from './firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import {userSlice,clearUser} from './reducers/userSlice';
+import Bottom from './Layout/Bottom';
 
 function App() {
     const [isLogged, setIsLogged] = useState(false);
@@ -68,6 +69,7 @@ function App() {
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
+            <Bottom/>
         </>
     );
 }

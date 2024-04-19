@@ -3,11 +3,19 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Badge } from 'react-bootstrap'
 import './SearchedCampingCard.style.css'
+import { useNavigate } from 'react-router-dom'
 
-const SearchedCampingCard = ({ data }) => {
+const SearchedCampingCard = ({ data ,contentId ,address}) => {
+
+
+   const navigate = useNavigate();
+   const handle = () => {
+      navigate(`/camping/${contentId}?keyword=${address}`);
+   }
+
    return (
       <Card style={{ width: '35rem' }}>
-         <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} />
+         <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} onClick={handle}/>
          <Card.Body style={{ height: '15rem' }}>
             <Card.Title>
                [{data?.doNm}&nbsp;

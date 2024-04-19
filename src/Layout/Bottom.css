@@ -1,0 +1,25 @@
+.BottomContainer{
+    color:rgb(145, 144, 144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 200px;
+    padding-bottom: 40px;
+}
+
+@media (max-width:768px) {
+    .BottomContainer p{
+        font-size: 13px;
+    }
+    .BottomContainer{
+        color:rgb(145, 144, 144);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 50px;
+        padding-bottom: 40px;
+    }
+    
+}
