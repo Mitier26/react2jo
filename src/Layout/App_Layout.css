@@ -22,7 +22,7 @@
 }
 
 .bg-black {
-    background-color: orange !important; /* 네비바의 배경색을 오렌지로 변경 */
+    background-color: rgb(255, 145, 0) !important; /* 네비바의 배경색을 오렌지로 변경 */
 }
 
 .Logo{

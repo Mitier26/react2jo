@@ -3,6 +3,7 @@ import KakaoMapLoader from './components/KakaoMapLoader';
 import { useCampingQuery } from '../../hooks/useCamping';
 import { useFestivalQuery } from '../../hooks/useFestival';
 import MainBanner from './MainBanner/MainBanner';
+import MainAnimal from './MainAnimal/MainAnimal';
 
 const MainPage = () => {
     // const { data, isLoading, isError, error } = useCampingQuery(37.5665, 126.978);
@@ -22,6 +23,7 @@ const MainPage = () => {
         <div>
             {/* <KakaoMapLoader /> */}
             <MainBanner />
+            <MainAnimal />
         </div>
     );
 };
