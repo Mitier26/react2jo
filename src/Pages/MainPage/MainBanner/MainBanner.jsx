@@ -57,7 +57,7 @@ const MainBanner = () => {
                         bgId = 'kyung-ki';
                     }
                     return (
-                        <div className={`slider-item `}>
+                        <div className={`slider-item `} key={item.contentId}>
                             <div className={`slider-color ${bgId}`}></div>
                             <Container className="d-flex container-height">
                                 <div className="slider-text">
@@ -71,6 +71,7 @@ const MainBanner = () => {
                                 </div>
                                 <div className="slider-img-box">
                                     <img src={item.firstImageUrl} className="slider-img" />
+                                    <div className='prac'></div>
                                 </div>
                             </Container>
                         </div>
