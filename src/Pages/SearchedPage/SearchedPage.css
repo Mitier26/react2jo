@@ -1,0 +1,28 @@
+.search-resultbox p:first-child {
+   padding-left: 0.5rem;
+   font-size: 1.4rem;
+   font-weight: 700;
+   margin-bottom: 0.2rem;
+}
+
+.search-resultbox p:last-child {
+   padding-left: 0.6rem;
+   font-size: 1.2rem;
+   font-weight: 400;
+}
+
+.o-page-link {
+   color: orange;
+   background-color: white;
+   border: none;
+   padding: 15px;
+   text-decoration: none;
+}
+.active > .o-page-link {
+   color: white;
+   background: orange;
+}
+.o-page-link:hover {
+   color: white;
+   background: orange;
+}

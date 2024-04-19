@@ -2,11 +2,13 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Badge } from 'react-bootstrap'
-import './SearchedCampingCard.style.css'
+import './SearchedCampingCard.css'
+import { useNavigate } from 'react-router-dom'
 
 const SearchedCampingCard = ({ data }) => {
+   const navigate = useNavigate()
    return (
-      <Card style={{ width: '35rem' }}>
+      <Card style={{ width: '35rem' }} onClick={() => navigate(`&${data?.contentId}`)}>
          <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} />
          <Card.Body style={{ height: '15rem' }}>
             <Card.Title>
@@ -30,7 +32,7 @@ const SearchedCampingCard = ({ data }) => {
             </ListGroup.Item>
             <ListGroup.Item>
                {data?.sbrsCl.split(',').map((facility, index) => (
-                  <Badge key={index} bg="danger" className=" justify-content-around py-2 me-1">
+                  <Badge key={index} bg="success" className=" justify-content-around py-2 me-1">
                      {facility}
                   </Badge>
                ))}

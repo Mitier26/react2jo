@@ -4,13 +4,22 @@ import { useSearchCampingQuery } from '../../hooks/useSearchCamping'
 import SearchedCampingCard from './components/SearchedCampingCard'
 import { Row, Col, Container, Alert } from 'react-bootstrap'
 import ReactPaginate from 'react-paginate'
+import './SearchedPage.css'
 
 const SearchedPage = () => {
    const [query, setQuery] = useSearchParams()
    const keyword = query.get('q')
-   const [page, setPage] = useState(1)
+   const [pageNo, setPage] = useState(1)
+   // const [data, setData] = useState(null)
+   // useEffect(() => {
+   //    if (searchData) {
+   //       setData(searchData)
+   //    }
+   // }, [searchData])
 
-   const { data: searchData, isLoading, isError, error } = useSearchCampingQuery({ keyword, page })
+   const { data, isLoading, isError, error } = useSearchCampingQuery({ keyword, pageNo })
+   console.log('data', data)
+
    if (isLoading) {
       return <h1>Loading...</h1>
    }
@@ -21,40 +30,49 @@ const SearchedPage = () => {
    const handlePageClick = ({ selected }) => {
       setPage(selected + 1)
 
-      console.log('page', selected) //출력안됨
+      console.log('page', selected)
    }
-   console.log('ddd', searchData)
 
+   const SearchItems = data?.response?.body?.items.item
+   console.log('searchItems', SearchItems)
+   console.log('totalcount', data.response.body.totalCount)
    return (
-      <Container className="justify-content-center my-4">
-         <Row className="justify-content-center">
-            {searchData?.map((campingData, index) => (
-               <Col key={index} lg={6} xs={12} className="w-auto p-3">
-                  <SearchedCampingCard data={campingData} />
-               </Col>
-            ))}
+      <Container className="justify-content-center my-4 camping-search">
+         <Row className="justify-content-center camping-search-text">
+            <div className="justify-content-start ms-4 search-resultbox">
+               <p>검색결과</p>
+               <p>{data?.response.body.totalCount} 개가 검색되었습니다. </p>
+            </div>
+            <Row>
+               {SearchItems?.map((campingData, index) => (
+                  <Col key={index} lg={6} xs={12} className="w-auto p-3">
+                     <SearchedCampingCard data={campingData} />
+                  </Col>
+               ))}
+            </Row>
          </Row>
+
          <div className="d-flex justify-content-center my-4">
             <ReactPaginate
                nextLabel=">"
                onPageChange={handlePageClick}
                pageRangeDisplayed={5}
                marginPagesDisplayed={5}
-               pageCount={page}
+               pageCount={data?.response?.body?.totalCount / 10 > 500 ? 500 : data?.response?.body?.totalCount / 10}
                previousLabel="<"
-               pageClassName="page-item"
-               pageLinkClassName="page-link"
-               previousClassName="page-item"
-               previousLinkClassName="page-link"
-               nextClassName="page-item"
-               nextLinkClassName="page-link"
+               pageClassName="o-page-item"
+               pageLinkClassName="o-page-link"
+               previousClassName="o-page-item"
+               previousLinkClassName="o-page-link"
+               nextClassName="o-page-item"
+               nextLinkClassName="o-page-link"
                breakLabel="..."
-               breakClassName="page-item"
-               breakLinkClassName="page-link"
+               breakClassName="o-page-item"
+               breakLinkClassName="o-page-link"
                containerClassName="pagination"
                activeClassName="active"
                renderOnZeroPageCount={null}
-               forcePage={page - 1}
+               forcePage={pageNo - 1}
             />
          </div>
       </Container>
