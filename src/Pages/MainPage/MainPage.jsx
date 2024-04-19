@@ -9,7 +9,7 @@ const MainPage = () => {
     return (
         <div>
             <MainBanner />
-            <KakaoMapLoader />
+            {/* <KakaoMapLoader /> */}
             <TourSlider />
             {/* <Map // 지도를 표시할 Container
                 id="map"
