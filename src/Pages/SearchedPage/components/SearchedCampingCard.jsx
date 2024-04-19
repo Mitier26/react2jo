@@ -5,11 +5,15 @@ import { Badge } from 'react-bootstrap';
 import './SearchedCampingCard.css';
 import { useNavigate } from 'react-router-dom';
 
-const SearchedCampingCard = ({ data }) => {
-    const navigate = useNavigate();
+const SearchedCampingCard = ({ data ,contentId ,address}) => {
+      const navigate = useNavigate();
+      const handle = () => {
+      navigate(`/camping/${contentId}?keyword=${address}`);
+      }
+      // onClick={() => navigate(`&${data?.contentId}`)
     return (
-        <Card style={{ width: '35rem' }} onClick={() => navigate(`&${data?.contentId}`)}>
-            <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} />
+        <Card style={{ width: '35rem' }}>
+            <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} onClick={handle}/>
             <Card.Body style={{ height: '15rem' }}>
                 <Card.Title>
                     [{data?.doNm}&nbsp;
