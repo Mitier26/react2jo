@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = process.env.TOUR_API_KEY;
+const apiKey = process.env.REACT_APP_TOUR_API_KEY;
 
 const api = axios.create({
     baseURL: 'https://apis.data.go.kr/B551011/KorService1',
@@ -10,7 +10,7 @@ const api = axios.create({
         MobileOS: 'WIN',
         MobileApp: 'testApp',
         _type: 'json',
-        serviceKey: apiKey,
+        serviceKey: 'Ax2gOM6GkDUSWs4UXnaJPC7Uo9n8mNaTNEG+0lEL0USRssJ68d2uZRCUeueuSWlthjuw1nQ3vo+ECh+jDsK/RQ==',
     },
 });
 
