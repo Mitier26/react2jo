@@ -3,12 +3,13 @@ import campingApi from "../utils/campingApi";
 
 
 
-export const useCampingDetail = ({params}) =>{
+
+export const useCampingDetail = ({params,keyword}) =>{
     return useQuery({
-        queryKey:['camping-detail',{params}],
+        queryKey:['camping-detail',{params,keyword}],
         queryFn: () => {
-            return campingApi.get(`/content/${params}`)
+            return campingApi.get(`/searchList?MobileOS=ETC&MobileApp=AppTest&keyword=${encodeURI(keyword)}&_type=json`);
         },
-        select:(result)=>result.data
+        select:(result)=>result.data.response.body.items.item,
     })
 }

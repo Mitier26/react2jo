@@ -15,4 +15,12 @@ module.exports = function (app) {
             changeOrigin: true,
         })
     );
+    app.use(
+        '/content',
+        createProxyMiddleware({
+            target: 'http://apis.data.go.kr/B551011/GoCamping',
+            changeOrigin: true,
+            pathRewrite: { '^/content': '' }, 
+        })
+    );
 };

@@ -11,6 +11,7 @@ const SearchedPage = () => {
    const [page, setPage] = useState(1)
 
    const { data: searchData, isLoading, isError, error } = useSearchCampingQuery({ keyword, page })
+   
    if (isLoading) {
       return <h1>Loading...</h1>
    }
@@ -30,7 +31,7 @@ const SearchedPage = () => {
          <Row className="justify-content-center">
             {searchData?.map((campingData, index) => (
                <Col key={index} lg={6} xs={12} className="w-auto p-3">
-                  <SearchedCampingCard data={campingData} />
+                  <SearchedCampingCard data={campingData} contentId = {campingData.contentId} address = {campingData.facltNm}/>
                </Col>
             ))}
          </Row>
