@@ -10,14 +10,16 @@ const SearchedPage = () => {
     const [query, setQuery] = useSearchParams();
     const keyword = query.get('q');
     const [pageNo, setPage] = useState(1);
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        if (searchData) {
-            setData(searchData);
-        }
-    }, [searchData]);
+    const [dataIs, setDataIs] = useState(null);
 
     const { data: searchData, isLoading, isError, error } = useSearchCampingQuery({ keyword, pageNo });
+
+    useEffect(() => {
+      if (searchData) {
+         setDataIs(searchData);
+      }
+  }, [searchData]);
+
 
     if (isLoading) {
         return <h1>Loading...</h1>;
@@ -27,20 +29,20 @@ const SearchedPage = () => {
     }
 
     const handlePageClick = ({ selected }) => {
-        setPage(selected + 1);
+      setDataIs(selected + 1);
 
         console.log('page', selected);
     };
 
-    const SearchItems = data?.response?.body?.items.item;
+    const SearchItems = dataIs?.response?.body?.items.item;
     console.log('searchItems', SearchItems);
-    console.log('totalcount', data.response.body.totalCount);
+    console.log('totalcount', dataIs?.response.body.totalCount);
     return (
         <Container className="justify-content-center my-4 camping-search">
             <Row className="justify-content-center camping-search-text">
                 <div className="justify-content-start ms-4 search-resultbox">
                     <p>검색결과</p>
-                    <p>{data?.response.body.totalCount} 개가 검색되었습니다. </p>
+                    <p>{dataIs?.response.body.totalCount} 개가 검색되었습니다. </p>
                 </div>
                 <Row>
                     {SearchItems?.map((campingData, index) => (
@@ -58,7 +60,7 @@ const SearchedPage = () => {
                     pageRangeDisplayed={5}
                     marginPagesDisplayed={5}
                     pageCount={
-                        data?.response?.body?.totalCount / 10 > 500 ? 500 : data?.response?.body?.totalCount / 10
+                        dataIs?.response?.body?.totalCount / 10 > 500 ? 500 : dataIs?.response?.body?.totalCount / 10
                     }
                     previousLabel="<"
                     pageClassName="o-page-item"
