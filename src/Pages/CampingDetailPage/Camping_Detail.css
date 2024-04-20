@@ -84,6 +84,16 @@
     background-color: rgb(235, 234, 232);
 }
 
+.FestivalRenderInfo{
+    display: none;
+}
+
+.bootstrapSpinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width:768px) {
     .DetailImage{
         width: 350px;
