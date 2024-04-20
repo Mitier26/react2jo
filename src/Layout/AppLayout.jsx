@@ -12,6 +12,8 @@ import app from '../firebase';
 import { useSelector } from 'react-redux';
 import '../Layout/App_Layout.css';
 import Logo from '../assets/siteLogo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const AppLayout = ({ isLogged }) => {
     const { currentUser } = useSelector(state => state.user);
@@ -56,32 +58,32 @@ const AppLayout = ({ isLogged }) => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-                            <Nav.Link className="text-white" href="/">
+                            <Nav.Link className="text-style" href="/">
                                 홈
                             </Nav.Link>
-                            <Nav.Link className="text-white" href="/camping">
+                            <Nav.Link className="text-style" href="/camping">
                                 캠핑장
                             </Nav.Link>
-                            <Nav.Link className="text-white" href="/festival">
+                            <Nav.Link className="text-style" href="/festival">
                                 축제
                             </Nav.Link>
                         </Nav>
                         <Form
-                            className="d-flex"
+                            className="d-flex search-btn"
                             onSubmit={(event) => {
                                 searchByKeyword(event);
                             }}
                         >
                             <Form.Control
                                 type="search"
-                                placeholder="Search"
-                                className="me-2"
+                                placeholder="내일은 어디로 갈까?"
+                                className="input-style"
                                 aria-label="Search"
                                 value={keyword}
                                 onChange={(event) => setKeyword(event.target.value)}
                             />
-                            <Button variant="outline-dark" type="submit">
-                                Search
+                            <Button variant='warning' type="submit" className=''>
+                                <FontAwesomeIcon icon={faMagnifyingGlass}/>
                             </Button>
                             {isLogged ? (
                                 <Dropdown show={dropdownOpen} onClick={toggleDropdown}>
