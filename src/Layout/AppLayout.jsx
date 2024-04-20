@@ -16,7 +16,7 @@ import Logo from '../assets/siteLogo.png'
 const AppLayout = ({ isLogged }) => {
     const { currentUser } = useSelector(state => state.user);
     const [dropdownOpen, setDropdownOpen] = useState(false); // 드롭다운 상태 추가
-    const [keyword, setKeyword] = useState('');
+    const [keyword, setKeyword] = useState();
     const navigate = useNavigate();
     const auth = getAuth(app);
 

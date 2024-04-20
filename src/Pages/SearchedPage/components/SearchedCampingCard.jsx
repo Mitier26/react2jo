@@ -10,7 +10,7 @@ const SearchedCampingCard = ({ data ,contentId ,address}) => {
       const handle = () => {
       navigate(`/camping/${contentId}?keyword=${address}`);
       }
-      // onClick={() => navigate(`&${data?.contentId}`)
+   
     return (
         <Card style={{ width: '35rem' }}>
             <Card.Img variant="top" src={`${data?.firstImageUrl}`} style={{ height: '20rem' }} onClick={handle}/>
