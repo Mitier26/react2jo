@@ -144,6 +144,13 @@ const KakaoMapLoader = () => {
         removeMarker();
 
         for (var i = 0; i < places.length; i++) {
+            var container = document.getElementById('map');
+            var option = {
+                center: new kakao.maps.LatLng(places.lat, places.lon),
+                level: 3, // 보이는 범위
+                isPanto: true, //부드럽게 이동
+            };
+            var map = new kakao.maps.Map(container, option);
             // 마커를 생성하고 지도에 표시합니다
             var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
                 marker = addMarker(placePosition, i),
