@@ -1,13 +1,19 @@
 .search-resultbox p:first-child {
+   text-align: center;
+
    padding-left: 0.5rem;
-   font-size: 1.4rem;
+   font-size: 2.6rem;
    font-weight: 700;
    margin-bottom: 0.2rem;
 }
+.search-resultbox p:first-child span {
+   color: rgb(232, 85, 6);
+}
 
 .search-resultbox p:last-child {
+   text-align: center;
    padding-left: 0.6rem;
-   font-size: 1.2rem;
+   font-size: 1.5rem;
    font-weight: 400;
 }
 
@@ -25,4 +31,10 @@
 .o-page-link:hover {
    color: white;
    background: orange;
+}
+
+@media (max-width: 768px) {
+   .pagination {
+      justify-content: center;
+   }
 }
