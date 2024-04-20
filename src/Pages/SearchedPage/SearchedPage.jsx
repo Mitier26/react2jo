@@ -5,6 +5,7 @@ import SearchedCampingCard from './components/SearchedCampingCard';
 import { Row, Col, Container, Alert } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import './SearchedPage.css';
+import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 
 const SearchedPage = () => {
     const [query, setQuery] = useSearchParams();
@@ -22,7 +23,7 @@ const SearchedPage = () => {
 
 
     if (isLoading) {
-        return <h1>Loading...</h1>;
+        return <div>{isLoadingSpinner()}</div>;
     }
     if (isError) {
         return <Alert variant="danger">{error.message}</Alert>;

@@ -4,6 +4,9 @@ import { useCampingDetail } from '../../hooks/useCampingDetail';
 import { Container, Spinner, Alert, Badge } from 'react-bootstrap';
 import '../CampingDetailPage/Camping_Detail.css';
 import dog from '../../assets/dog.png';
+import FestivalDetailPage from '../FestivalDetailPage/FestivalDetailPage';
+import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
+
 
 const CampingDetailPage = () => {
     const { id } = useParams();
@@ -11,10 +14,13 @@ const CampingDetailPage = () => {
     const keyword = addr.get('keyword');
     const { data, isLoading, error, isError } = useCampingDetail({ params: id, keyword: keyword });
 
+    console.log(data);
+    
+    
     if (isLoading) {
         return (
             <div>
-                <Spinner />
+                {isLoadingSpinner()}
             </div>
         );
     }
@@ -69,7 +75,7 @@ const CampingDetailPage = () => {
                                 </Badge>
                             ))}
                         </div>
-                        <h4 className="DetailIntroTitle">나라 시설인가요, 개인시설인가요?</h4>
+                        <h4 className="DetailIntroTitle">어떤 시설인가요?</h4>
                         <div className="answerInfo">{item.brazierCl}시설 입니다.</div>
                         <h4 className="DetailIntroTitle">
                             <img className="dogImage" src={dog} /> 반려동물과 함께 사용할 수 있나요?
@@ -85,6 +91,9 @@ const CampingDetailPage = () => {
                             <div>전화번호 : {item.tel ? <>{item.tel}</> : '자세한 정보가 나와있지 않아요.'}</div>
                         </div>
                     </div>
+                    {item.mapX && item.mapY && (
+                        <FestivalDetailPage key={item.id} mapX={item.mapX} mapY={item.mapY} />
+                    )}
                 </>
             ))}
         </Container>
