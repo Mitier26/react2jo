@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import '../MyPage/My_Page.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Row, Col, Nav, Tab } from 'react-bootstrap';
+import { Row,Col, Nav,Container } from 'react-bootstrap';
 import { getAuth, updateProfile } from 'firebase/auth';
 import app, { db, storage } from '../../firebase';
 import { setPhotoUrl } from '../../reducers/userSlice';
@@ -17,11 +17,17 @@ const MyPage = () => {
 
     const handleTabChange = (tabName) => {
         setActiveTab(tabName);
+        const contentElement = document.getElementById(tabName.toLowerCase()); //탭 이름을 소문자로 변환한 후, 해당하는 요소를 찾기
+        
+        if (contentElement) {
+            contentElement.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const handleOpenImage = () =>{
       inputOpenImageRef.current.click();
     }
+
   
     const handleUploadImage =(event) => {
   
@@ -98,7 +104,7 @@ const MyPage = () => {
   
     return (
         <>
-            <Container className='myPageContainer'>
+            <div className='myPageContainer'>
                 <Row className='myPageInfoContainer'>
                     <div className='myPageUserImageBox'>
                         <img className='myPageUserImage' src={currentUser.photoURL} alt="User"/>
@@ -107,46 +113,61 @@ const MyPage = () => {
                       <button className='ImageEditBtn' onClick={handleOpenImage} >이미지 수정</button>
                     </div>
                 </Row>
-            </Container>
-            <Container className='myPageUserInfoContainer'>
-                <Row className="justify-content-center">
-                    <Col xs={12} md={8}>
-                        <Nav variant="tabs" defaultActiveKey="userInfo" className="justify-content-center">
-                            <Nav.Item>
-                                <Nav.Link 
-                                    eventKey="userInfo" 
-                                    onClick={() => handleTabChange('userInfo')} 
-                                    className={activeTab === 'userInfo' ? 'activeTab' : 'inactiveTab'}>
-                                    회원 정보
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link 
-                                    eventKey="favoriteCamping" 
-                                    onClick={() => handleTabChange('favoriteCamping')} 
-                                    className={activeTab === 'favoriteCamping' ? 'activeTab' : 'inactiveTab'}>
-                                    찜한 캠핑장
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Col>
-                </Row>
-                <Row className="justify-content-center">
-                    <Col xs={12} md={8}>
-                        <Tab.Content>
-                            <Tab.Pane eventKey="userInfo">
-                                {/* 회원 정보*/}
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="favoriteCamping">
-                                {/* 찜한 캠핑장 컴포넌트 */}
-                            </Tab.Pane>
-                        </Tab.Content>
-                    </Col>
-                </Row>
-            </Container>
+            </div>
+            <Nav className='TabContainer' fill variant="tabs" defaultActiveKey="/home">
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="link-1"
+                  active={activeTab === 'userInfo'}
+                  onClick={() => handleTabChange('userInfo')}
+                  style={{ color: 'black',borderBottom:'1px solid #eeeeee', backgroundColor: activeTab === 'userInfo' ? 'orange' : 'white' }}
+                >
+                회원정보
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="link-1"
+                  active={activeTab === 'favorites'}
+                  onClick={() => handleTabChange('favorites')}
+            style={{ color: 'black', borderBottom:'1px solid #eeeeee', backgroundColor: activeTab === 'favorites' ? 'orange' : 'white' }}
+          >
+                찜한 캠핑장
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+
+        <div id="userInfo" style={{ height: 'auto', marginTop: '20px' }}>
+          <Container>
+            <h3 className='InfoTitle'> 회원 정보 </h3>
+            <Row>
+              <Col className='InfoContainer'>
+                  <div className='myInfoImageBox'>
+                        <img className='myPageUserImage' src={currentUser.photoURL} alt="User"/>
+                  </div>
+                  <div> 이메일 : {currentUser.email}</div>
+                  <div> 닉네임 : {currentUser.displayName}</div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+
+        <div className="favorites" id="favorites" style={{ height: '1000px', marginTop: '20px' }}>
+          <Container className='favoritesCampingContainer'>
+            <Row>
+              <Col>
+                  <h3 className='favoritesTitle'> 찜한 캠핑장 </h3>
+                  <div className='favoritesList'>
+                    <div>찜한 캠핑장이 존재하지 않습니다.</div>
+                  </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
             <input onChange = {handleUploadImage} type='file' ref={inputOpenImageRef} style={{display:'none'}} accept='image/jpeg, image/png'/>
         </>
     );
 };
 
 export default MyPage;
+

@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 
 
@@ -53,4 +54,66 @@
     border: none;
     border-radius: 20px;
     color: white;
+}
+
+.InfoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    border: 3px solid orange;
+    border-radius: 50px;
+}
+
+.InfoContainer div{
+    padding:10px;
+}
+
+.myInfoTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myInfoImageBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favoritesCampingContainer{
+    margin-top: 100px;
+}
+
+.favoritesList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px;
+    border-radius: 50px;
+    padding-top: 20px;
+}
+
+.InfoTitle{
+    margin-top: 100px;
+    color : orange;
+}
+
+.favoritesTitle{
+    color : orange;
+    margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+    .InfoContainer{
+        width: 300px;
+    }
+
+    .InfoTitle{
+        margin-top: 50px;
+        color : orange;
+    }
+    
 }

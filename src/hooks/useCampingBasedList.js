@@ -1,14 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import campingApi from "../utils/campingApi";
+import { useQuery } from '@tanstack/react-query'
+import campingApi from '../utils/campingApi'
 
 const fetchCampingBasedList = () => {
-    return campingApi.get('/basedList?')
+   return campingApi.get('/basedList?')
 }
 
 export const useCampingBasedList = () => {
-    return useQuery({
-        queryKey:['camping-based'],
-        queryFn:fetchCampingBasedList,
-        select:(result)=>result.data
-    })
+   return useQuery({
+      queryKey: ['camping-based'],
+      queryFn: fetchCampingBasedList,
+      select: (result) => result.data,
+   })
 }

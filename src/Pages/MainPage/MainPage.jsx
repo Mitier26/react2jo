@@ -4,13 +4,14 @@ import MainBanner from './MainBanner/MainBanner';
 import TourSlider from '../../components/TourSlider/TourSlider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Map } from 'react-kakao-maps-sdk';
+import MainAnimal from './MainAnimal/MainAnimal';
 
 const MainPage = () => {
     return (
         <div>
-            <MainBanner />
+            {/* <MainBanner /> */}
             <KakaoMapLoader />
-            <TourSlider />
+            {/* <TourSlider /> */}
             {/* <Map // 지도를 표시할 Container
                 id="map"
                 center={{
@@ -25,6 +26,7 @@ const MainPage = () => {
                 }}
                 level={3} // 지도의 확대 레벨
             /> */}
+            {/* <MainAnimal /> */}
         </div>
     );
 };
