@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'TTHakgyoansimKkwabaegiR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimKkwabaegiR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.animal-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-area-title {
+    margin: 0.5rem 0.5rem;
+}
+
+.animal-card-margin {
+    margin: 0rem 0.5rem;
+    overflow: hidden;
+}
+
+.animal-card-item {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 0.5rem;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.animal-card-item:hover {
+    scale: 1.1;
+}
+
+.animal-badge {
+    border: 2px solid rgb(255, 145, 0);
+    width: 5rem;
+    height: 1.8rem;
+    border-radius: 2.5rem / 0.9rem;
+    text-align: center;
+    color: rgb(255, 145, 0);
+    font-family: 'TTHakgyoansimKkwabaegiR';
+}
+
+.animal-name {
+    word-break: keep-all;
+    color: rgb(255, 123, 0);
+    font-family: 'TTHakgyoansimJeomsimsiganB';
+    background-color: rgba(0, 0, 0, 0.35);
+    width: 100%;
+}
+
+.foo-area {
+    display: flex;
+    align-items: center;
+}
+
+.animal-do {
+    font-family: 'seolleimcool-SemiBold';
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: rgb(247, 243, 227);
+    margin-left: 0.3rem;
+}
+
+.location-badge {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: rgb(247, 243, 227);
+    font-size: 1rem;
+    border: 2px solid rgb(247, 243, 227);
+    border-radius: 100px;
+    text-align: top;
+    margin-left: 0.3rem;
+}

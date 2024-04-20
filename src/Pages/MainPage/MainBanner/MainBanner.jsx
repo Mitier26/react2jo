@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useCampingBasedList } from '../../../hooks/useCampingBasedList';
-import { Alert, Container, Spinner } from 'react-bootstrap';
+import { Alert, Container, Row, Col, Spinner } from 'react-bootstrap';
 
 const MainBanner = () => {
     const settings = {
@@ -19,7 +19,6 @@ const MainBanner = () => {
         arrows: false,
     };
     const { data, isLoading, isError, error } = useCampingBasedList();
-    // console.log(data);
     if (isLoading) {
         return <Spinner animation="border" variant="warning" />;
     }
@@ -27,7 +26,6 @@ const MainBanner = () => {
         return <Alert>{error.message}</Alert>;
     }
     const CarouselItems = data.response.body.items.item;
-    // console.log(CarouselItems);
     return (
         <div className="slider-container slider-area">
             <Slider {...settings} className="slider-item-box">
@@ -45,34 +43,41 @@ const MainBanner = () => {
                         bgId = 'gang-won';
                     } else if (item.doNm === '경상남도' || item.doNm === '경상북도') {
                         stateLabel = '캠핑장 살↗아있네!';
-                        stateSubLabel = '신난다!';
+                        stateSubLabel = '마!';
                         bgId = 'kyung-sang';
                     } else if (item.doNm === '전라남도' || item.doNm === '전라북도') {
                         stateLabel = '캠핑장 가가지고 바베큐 한 번 구울라니까~';
-                        stateSubLabel = '오세요~';
+                        stateSubLabel = '가자!';
                         bgId = 'jun-ra';
                     } else if (item.doNm === '경기도') {
                         stateLabel = '숨은 캠핑 맛집!';
-                        stateSubLabel = '어서오세요~';
+                        stateSubLabel = '여기!';
                         bgId = 'kyung-ki';
                     }
                     return (
-                        <div className={`slider-item `} key={item.contentId}>
+                        <div key={item.contentId}>
                             <div className={`slider-color ${bgId}`}></div>
-                            <Container className="d-flex container-height">
-                                <div className="slider-text">
-                                    <div className="slider-text-items">
-                                        <h2>{stateLabel}</h2>
-                                        <h2>
-                                            {stateSubLabel} {item.doNm}
-                                        </h2>
-                                        <h4>{item.facltNm}</h4>
-                                    </div>
-                                </div>
-                                <div className="slider-img-box">
-                                    <img src={item.firstImageUrl} className="slider-img" />
-                                    <div className='prac'></div>
-                                </div>
+                            <Container className="container-height">
+                                <Row>
+                                    <Col sm={6} className="slider-text">
+                                        <div className="slider-text-items">
+                                            <h2 className='label-style'>{stateLabel}</h2>
+                                            <h2>
+                                                <span className='sub-style'>{stateSubLabel}</span><span className='do-style'>{item.doNm}</span>
+                                            </h2>
+                                            <h4>{item.facltNm}</h4>
+                                        </div>
+                                    </Col>
+                                    <Col sm={5} className='slider-img-area'>
+                                        <div className="slider-img-box">
+                                            <img src={item.firstImageUrl} className="slider-img" />
+                                            <div className='prac'></div>
+                                        </div>
+                                        
+                                        
+                                    </Col>  
+                                </Row>
+                                
                             </Container>
                         </div>
                     );

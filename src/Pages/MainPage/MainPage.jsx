@@ -5,13 +5,25 @@ import TourSlider from '../../components/TourSlider/TourSlider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Map } from 'react-kakao-maps-sdk';
 import MainAnimal from './MainAnimal/MainAnimal';
+import { useCampingAnimal } from '../../hooks/useCampingAnimal';
+import { Alert } from 'react-bootstrap';
+import MainPublic from './MainPublic/MainPublic';
 
 const MainPage = () => {
+    const {data:cardData,isLoading,isError,error} = useCampingAnimal();
+    if (isLoading) {
+      return <h1>loading</h1>
+    }
+    if (isError) {
+      return <Alert>{error.message}</Alert>
+    }
     return (
         <div>
-            {/* <MainBanner /> */}
+            <MainBanner />
+            <MainAnimal cardData={cardData}/>
             <KakaoMapLoader />
-            {/* <TourSlider /> */}
+            <MainPublic cardData={cardData}/>
+            <TourSlider />
             {/* <Map // 지도를 표시할 Container
                 id="map"
                 center={{
@@ -26,7 +38,6 @@ const MainPage = () => {
                 }}
                 level={3} // 지도의 확대 레벨
             /> */}
-            {/* <MainAnimal /> */}
         </div>
     );
 };
