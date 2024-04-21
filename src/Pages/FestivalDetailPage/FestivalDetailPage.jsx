@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import app from '../../firebase';
 import { clearUser } from '../../reducers/userSlice';
 
+
+//좌표이용
 const FestivalDetailPage = ({ mapX, mapY }) => {
     const x = mapX;
     const y = mapY;
