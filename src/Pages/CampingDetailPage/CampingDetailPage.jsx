@@ -7,6 +7,7 @@ import dog from '../../assets/dog.png';
 import FestivalDetailPage from '../FestivalDetailPage/FestivalDetailPage';
 import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 import phone from '../../assets/phone.png';
+import noImage from '../../assets/noImage.png'
 
 const CampingDetailPage = () => {
     const { id } = useParams();
@@ -30,7 +31,11 @@ const CampingDetailPage = () => {
                     <tr key={item.id}>
                             <td>
                                 <div className="DetailImageContainer">
-                                    <img src={item.firstImageUrl} alt="Camping Image" className="DetailImage" />
+                                <img
+                                    src={item.firstImageUrl ? item.firstImageUrl : noImage}
+                                    alt="Camping Image"
+                                    className="DetailImage"
+                                />
                                 </div>
                             </td>
                         </tr>
