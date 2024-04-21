@@ -22,7 +22,7 @@ const MainPage = () => {
         <div>
             <MainBanner />
             <MainAnimal cardData={cardData} />
-            {/* <KakaoMapLoader /> */}
+            <KakaoMapLoader />
             <MainPublic cardData={cardData} />
             <TourSlider />
             {/* <Map // 지도를 표시할 Container
