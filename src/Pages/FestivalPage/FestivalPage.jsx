@@ -13,7 +13,7 @@ const FestivalPage = () => {
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const festivalsPerPage = 10;
+  const festivalsPerPage = 8;
 
   useEffect(() => {
     const fetchData = async () => {
