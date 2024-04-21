@@ -1,8 +1,55 @@
+
 .tour-card {
-    width: 300px;
-    height: 400px;
+    width: 15rem;
+    height: 20rem;
+    border-radius: 0.5rem;
     background-position: center;
     background-size: cover;
     cursor: pointer;
     color: white;
+    margin: 0rem 0.25rem !important;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.festival-slide-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    word-break: keep-all;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.festival-slide-card:hover {
+    scale: 1.1;
+    z-index: 2;
+}
+
+.festival-text-bg {
+    background-color: rgba(0, 0, 0, 0.35);
+    width: 100%;
+    padding: 0.3rem 0rem;
+}
+
+.festival-border {
+    width: 8rem;
+    height: 13rem;
+    position: absolute;
+    border-top: 0.1rem solid rgb(247, 243, 227);
+    border-bottom: 0.1rem solid rgb(247, 243, 227);
+}
+
+.festival-slide-card-text {
+    font-family: 'TTHakgyoansimJeomsimsiganB';
+    color: rgb(247, 243, 227);
+    font-size: 2.5rem;
+}
+
+.festival-do {
+    font-family: 'seolleimcool-SemiBold';
+    color: rgb(255, 123, 0);
 }

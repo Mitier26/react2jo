@@ -17,6 +17,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { userSlice, clearUser } from './reducers/userSlice';
 import Bottom from './Layout/Bottom';
+import FestivalInfoPage from './Pages/FestivalInfoPage/FestivalInfoPage';
 
 function App() {
     const [isLogged, setIsLogged] = useState(false);
@@ -64,7 +65,7 @@ function App() {
                     </Route>
                     <Route path="festival">
                         <Route index element={<FestivalPage />} />
-                        <Route path=":id" element={<FestivalDetailPage />} />
+                        <Route path=":id" element={<FestivalInfoPage />} />
                     </Route>
                     <Route path="search" element={<SearchedPage />} />
                 </Route>

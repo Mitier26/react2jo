@@ -25,35 +25,38 @@ const MainPublic = (data) => {
   return (
     <Container>
         <div className='public-area-title'>
-            <span>공공 기관 캠핑장</span>
-            <span>여긴 어때?</span>
+            <spa className='public-container-title'>공공 기관 캠핑장</spa>
+            {/* <span>여긴 어때?</span> */}
         </div>
-        <div className='public-card'>
-            {publicItem?.map(item=>{
-                return (
-                    <div
-                        key={item.contentId}
-                        className='public-card-margin'
-                        onClick={()=>getCardDetail(item)}
-                    >
+        <div className='media-scroll'>
+            <div className='public-card'>
+                {publicItem?.map(item=>{
+                    return (
                         <div
-                            style={{backgroundImage:"url("+`${item.firstImageUrl}`+")"}}
-                            className='public-card-item'
+                            key={item.contentId}
+                            className='public-card-margin'
+                            onClick={()=>getCardDetail(item)}
                         >
-                            <div className='public-border'></div>
-                            <div className='public-card-bg'>
-                                <div className='public-do'>{item.doNm}</div>
-                                <h2 className='public-name'>{item.facltNm}</h2>
-                                <div className='public-location'>
-                                    <span className='public-location-color'>{item.lctCl}</span>
-                                    <span className='public-camping-color'> 캠핑</span>
+                            <div
+                                style={{backgroundImage:"url("+`${item.firstImageUrl}`+")"}}
+                                className='public-card-item'
+                            >
+                                <div className='public-border'></div>
+                                <div className='public-card-bg'>
+                                    <div className='public-do'>{item.doNm}</div>
+                                    <h2 className='public-name'>{item.facltNm}</h2>
+                                    <div className='public-location'>
+                                        <span className='public-location-color'>{item.lctCl}</span>
+                                        <span className='public-camping-color'> 캠핑</span>
+                                    </div>
                                 </div>
+                                
                             </div>
-                            
-                        </div>
-                    </div>    
-                )
-            })}
+                        </div>    
+                    )
+                })}    
+            </div>
+            
         </div>
       
     </Container>
