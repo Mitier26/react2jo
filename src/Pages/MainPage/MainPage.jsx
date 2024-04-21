@@ -25,7 +25,7 @@ const MainPage = () => {
     return (
         <div>
             <MainBanner />
-            <MainAnimal cardData={cardData}/>
+            <MainAnimal cardData={cardData} />
             <KakaoMapLoader />
             <MainPublic cardData={cardData}/>
             <TourSlider />
