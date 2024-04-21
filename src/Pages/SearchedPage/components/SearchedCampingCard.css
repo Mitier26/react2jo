@@ -1,6 +1,7 @@
 .card {
-   border: 5px solid #ffbb70;
+   border: 1px solid #adadad;
    border-radius: 10px 10px 10px 10px;
+   overflow: hidden;
 }
 
 .camping-card-img {

@@ -8,11 +8,16 @@ import MainAnimal from './MainAnimal/MainAnimal';
 import { useCampingAnimal } from '../../hooks/useCampingAnimal';
 import { Alert } from 'react-bootstrap';
 import MainPublic from './MainPublic/MainPublic';
+import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 
 const MainPage = () => {
     const {data:cardData,isLoading,isError,error} = useCampingAnimal();
     if (isLoading) {
-      return <h1>loading</h1>
+      return (
+        <div>
+            {isLoadingSpinner}
+        </div>
+      )
     }
     if (isError) {
       return <Alert>{error.message}</Alert>

@@ -11,11 +11,11 @@ const MasterSlider = ({ title, data, responsive }) => {
             <h3>{title}</h3>
             <Carousel
                 infinite={true}
-                centerMode={true}
+                centerMode={false}
                 itemClass="movie-slicer p-1"
                 containerClass="carousel-container"
                 responsive={responsive}
-                focusOnSelect={true}
+                // focusOnSelect={true}
             >
                 {data.item.map((item, index) => (
                     <TourCard data={item} key={index} />

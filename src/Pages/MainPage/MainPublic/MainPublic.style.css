@@ -1,3 +1,35 @@
+.public-container-title {
+    /* font-family: 'LINESeedKR-Bd'; */
+    /* font-family: 'yg-jalnan'; */
+    /* font-family: 'seolleimcool-SemiBold'; */
+    /* font-family: 'SF_HailSnow'; */
+    /* font-family: 'LotteMartHappy'; */
+    font-size: 1.6rem;
+    font-weight: 900;
+    padding-right: 0.5rem;
+    color: rgb(58, 58, 58);
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF_HailSnow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HailSnow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .public-area-title {
     margin: 0.5rem;
@@ -27,6 +59,9 @@
     justify-content: center;
     padding: 1.5rem 0rem;
     text-align: center;
+    overflow: hidden;
+    position: relative;
+    word-break: keep-all;
 }
 
 .public-card-item:hover {
@@ -52,12 +87,6 @@
     font-size: 1.7rem;
     color: rgb(247, 243, 227);
 }
-@font-face {
-    font-family: 'seolleimcool-SemiBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .public-name {
     word-break: keep-all;
@@ -78,4 +107,20 @@
 .public-camping-color {
     font-size: 1.4rem;
     color: rgb(255, 123, 0);
+}
+
+@media screen  and (max-width: 36rem) {
+    .media-scroll {    
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+
+    .public-card {
+        width: max-content;
+        display: flex;
+    }
+
+    .public-card-margin {
+        margin: 0rem 0.25rem;
+    }
 }
