@@ -64,51 +64,51 @@ const FestivalPage = () => {
         return <Alert variant="danger">{isError}</Alert>;
     }
 
-
-  const indexOfLastFestival = currentPage * festivalsPerPage;
-  const indexOfFirstFestival = indexOfLastFestival - festivalsPerPage;
-  const currentFestivals = festivals.slice(indexOfFirstFestival, indexOfLastFestival);
-
-  if (isLoading) {
-    return isLoadingSpinner();
-  }
-
-  if (isError) {
-    return <Alert variant="danger">{isError}</Alert>;
-  }
-
-  return (
-    <Container>
-      <h1 className="my-4">전국 축제 리스트</h1>
-      <Row>
-        {currentFestivals.map((festival, index) => (
-          <Col key={index} lg={3} md={6} className="mb-4" onClick={()=>navigate(`/festival/${festival.contentid}`)}>
-            <Card className="h-100 festival-cursor">
-              <Card.Img
-                className='festivalImage'
-                variant="top"
-                src={festival.firstimage ? festival.firstimage : noImage}
-                alt="Festival Image"
-              />
-              <Card.Body>
-                <Card.Title>{festival.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{festival.startDate}</Card.Subtitle>
-                <Card.Text>{festival.addr1}</Card.Text>
-                <Card.Text><img className = "phoneImage" src={phone} />&nbsp;&nbsp;{festival.tel}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <Pagination>
-        {[...Array(Math.ceil(festivals.length / festivalsPerPage)).keys()].map((number) => (
-          <Pagination.Item key={number} active={number + 1 === currentPage} onClick={() => handlePageChange(number + 1)}>
-            {number + 1}
-          </Pagination.Item>
-        ))}
-      </Pagination>
-    </Container>
-  );
+    return (
+        <Container>
+            <h1 className="my-4">전국 축제 리스트</h1>
+            <Row>
+                {currentFestivals.map((festival, index) => (
+                    <Col
+                        key={index}
+                        lg={3}
+                        md={6}
+                        className="mb-4"
+                        onClick={() => navigate(`/festival/${festival.contentid}`)}
+                    >
+                        <Card className="h-100 festival-cursor">
+                            <Card.Img
+                                className="festivalImage"
+                                variant="top"
+                                src={festival.firstimage ? festival.firstimage : noImage}
+                                alt="Festival Image"
+                            />
+                            <Card.Body>
+                                <Card.Title>{festival.title}</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">{festival.startDate}</Card.Subtitle>
+                                <Card.Text>{festival.addr1}</Card.Text>
+                                <Card.Text>
+                                    <img className="phoneImage" src={phone} />
+                                    &nbsp;&nbsp;{festival.tel}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+            <Pagination>
+                {[...Array(Math.ceil(festivals.length / festivalsPerPage)).keys()].map((number) => (
+                    <Pagination.Item
+                        key={number}
+                        active={number + 1 === currentPage}
+                        onClick={() => handlePageChange(number + 1)}
+                    >
+                        {number + 1}
+                    </Pagination.Item>
+                ))}
+            </Pagination>
+        </Container>
+    );
 };
 
 export default FestivalPage;
