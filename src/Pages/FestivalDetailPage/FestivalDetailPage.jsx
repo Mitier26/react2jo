@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import app from '../../firebase';
 import { clearUser } from '../../reducers/userSlice';
 
+
+//좌표이용
 const FestivalDetailPage = ({ mapX, mapY }) => {
     const x = mapX;
     const y = mapY;
@@ -19,6 +21,7 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const appAuth = getAuth(app); // firebase auth 인증서
+    const apiKey = process.env.REACT_APP_TOUR_API_KEY;
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(appAuth, (user) => {
@@ -39,7 +42,6 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const apiKey = "KQM2A5C9L5RvGwpDcXQv5wtEijp0j9vQIrFFSO2El1eZeSD3rnezIEKaWrg9hTRwrx4Zeg4V1Tguhm%2BmpTCTXA%3D%3D";
                 const numOfRows = 30;
                 const pageNo = 1;
                 const mobileOS = "WIN";
@@ -57,7 +59,6 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
                 const { data } = response;
                 const { response: { body: { items: { item } } } } = data;
 
-                console.log("Festivals data:", item);
                 setFestivals(item);
 
                 setLoading(false);
@@ -101,7 +102,7 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
                             <Row>
                                 {chunk.map((festival, festivalIndex) => (
                                     <Col key={festivalIndex} lg={4} md={6} className="mb-4">
-                                        <Card>
+                                        <Card className='festivalDetailCardContainer'>
                                             {festival.firstimage && (
                                                 <Card.Img className='festivalImage'
                                                     variant="top"

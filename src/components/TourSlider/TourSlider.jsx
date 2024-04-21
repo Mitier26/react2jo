@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFestivalQuery } from '../../hooks/useFestival';
-import { Alert, Spinner } from 'react-bootstrap';
+import { Alert, Container, Spinner } from 'react-bootstrap';
 import MasterSlider from '../MasterSlider/MasterSlider';
 import { responsive } from '../responsive';
 
@@ -24,9 +24,9 @@ const TourSlider = () => {
     }
 
     return (
-        <div>
+        <Container>
             <MasterSlider title="축제" data={data} responsive={responsive} />
-        </div>
+        </Container>
     );
 };
 

@@ -4,7 +4,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useCampingBasedList } from '../../../hooks/useCampingBasedList';
-import { Alert, Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Alert, Container, Row, Col } from 'react-bootstrap';
+import isLoadingSpinner from '../../../common/Spinner/isLoadingSpinner';
 
 const MainBanner = () => {
     const settings = {
@@ -20,7 +21,11 @@ const MainBanner = () => {
     };
     const { data, isLoading, isError, error } = useCampingBasedList();
     if (isLoading) {
-        return <Spinner animation="border" variant="warning" />;
+        return (
+            <div>
+                {isLoadingSpinner()}
+            </div>
+        );
     }
     if (isError) {
         return <Alert>{error.message}</Alert>;
@@ -73,8 +78,6 @@ const MainBanner = () => {
                                             <img src={item.firstImageUrl} className="slider-img" />
                                             <div className='prac'></div>
                                         </div>
-                                        
-                                        
                                     </Col>  
                                 </Row>
                                 

@@ -1,0 +1,88 @@
+.card {
+    background-color: white; 
+    border: 5px solid orange; 
+    border-radius: 10px; 
+  }
+  
+
+  .card-title {
+    color: black; 
+  }
+
+  .card-subtitle {
+    color: #333;
+  }
+  
+
+  .card-text {
+    color: #666; 
+  }
+  
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  .pagination .page-item {
+    margin: 0 0.5rem;
+  }
+  
+  .pagination .page-link {
+    color: orange;
+    background-color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+  
+  .pagination .page-item.active .page-link {
+    color: white;
+    background-color: orange;
+  }
+
+  
+  .pagination .page-link:hover {
+    color: white;
+    background-color: orange;
+  }
+  
+  
+
+  @media (max-width: 768px) {
+    .pagination {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+      }
+      
+      .pagination .page-item {
+        margin: 0 0.0.1rem;
+        
+      }
+      
+      .pagination .page-link {
+        color: orange;
+        background-color: white;
+        border: none;
+        padding: 0.0.4rem 1rem;
+        text-decoration: none;
+      }
+      
+      .pagination .page-item.active .page-link {
+        color: white;
+        background-color: orange;
+        width: 20px;
+        height: 25px;
+        display: flex;
+        list-style: none;
+        justify-content: center;
+      }
+      
+      .pagination .page-link:hover {
+        color: white;
+        background-color: orange;
+      }
+    
+  }

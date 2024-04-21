@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useCampingDetail } from '../../hooks/useCampingDetail';
 import { Container, Spinner, Alert, Badge } from 'react-bootstrap';
@@ -7,6 +7,7 @@ import dog from '../../assets/dog.png';
 import FestivalDetailPage from '../FestivalDetailPage/FestivalDetailPage';
 import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 import phone from '../../assets/phone.png';
+import noImage from '../../assets/noImage.png'
 
 const CampingDetailPage = () => {
     const { id } = useParams();
@@ -14,7 +15,10 @@ const CampingDetailPage = () => {
     const keyword = addr.get('keyword');
     const { data, isLoading, error, isError } = useCampingDetail({ params: id, keyword: keyword });
 
-    console.log(data);
+    useEffect(() => {
+        // 페이지가 로드될 때 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     if (isLoading) {
         return <div>{isLoadingSpinner()}</div>;
@@ -27,9 +31,22 @@ const CampingDetailPage = () => {
         <Container>
             {data?.map((item) => (
                 <div key={item.id} className="DetailContainer">
-                    <div className="DetailImageContainer">
-                        <img src={item.firstImageUrl} alt="Camping Image" className="DetailImage" />
-                    </div>
+                    <tr key={item.id}>
+                            <td>
+                                <div className="DetailImageContainer">
+                                <img
+                                    src={item.firstImageUrl ? item.firstImageUrl : noImage}
+                                    alt="Camping Image"
+                                    className="DetailImage"
+                                />
+                                </div>
+                            </td>
+                        </tr>
+                        <h3>{item.facltNm}</h3>
+                        <div>{item.addr1}</div>
+                        <div className="reservationBtn">
+                            <a href={item.homepage}>예약하러 가기</a>
+                        </div>
                     <div className="DetailInfoContainer">
                         <h4 className="DetailIntroTitle">어떤 장소인가요?</h4>
                         <div className="answerInfo">

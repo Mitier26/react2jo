@@ -1,4 +1,16 @@
 .carousel-container {
     overflow: hidden;
-    height: 440px;
 }
+
+.react-multi-carousel-track li {
+	width: 15.5rem !important;
+}
+
+
+@media screen  and (max-width: 36rem) {
+   .carousel-container button {
+    display: none;
+} 
+}
+
+
