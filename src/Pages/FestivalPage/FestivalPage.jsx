@@ -7,6 +7,7 @@ import { Container, Row, Col, Card, Pagination, Alert} from "react-bootstrap";
 import './FestivalPage.style.css';
 import noImage from "../../assets/noImage.png";
 import isLoadingSpinner from "../../common/Spinner/isLoadingSpinner"; 
+import phone from '../../assets/phone.png';
 
 const FestivalPage = () => {
   const [festivals, setFestivals] = useState([]);
@@ -14,11 +15,11 @@ const FestivalPage = () => {
   const [isError, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const festivalsPerPage = 8;
+  const apiKey = process.env.REACT_APP_TOUR_API_KEY;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = "KQM2A5C9L5RvGwpDcXQv5wtEijp0j9vQIrFFSO2El1eZeSD3rnezIEKaWrg9hTRwrx4Zeg4V1Tguhm%2BmpTCTXA%3D%3D";
         const url = `https://apis.data.go.kr/B551011/KorService1/searchFestival1?numOfRows=100&pageNo=1&MobileOS=WIN&MobileApp=Festival&_type=json&listYN=Y&arrange=D&eventStartDate=20100101&eventEndDate=20240420&serviceKey=${apiKey}`;
 
         const response = await axios.get(url);
@@ -76,6 +77,7 @@ const FestivalPage = () => {
                 <Card.Title>{festival.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{festival.startDate}</Card.Subtitle>
                 <Card.Text>{festival.addr1}</Card.Text>
+                <Card.Text><img className = "phoneImage" src={phone} />&nbsp;&nbsp;{festival.tel}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
