@@ -67,7 +67,7 @@ const FestivalInfoPage = () => {
           </div>
           <div>
             <button>행사내용</button>
-            {InfoItem[1]?<p dangerouslySetInnerHTML={{ __html: InfoItem?InfoItem[1].infotext:''}} />:''}
+            {InfoItem && InfoItem.length >= 2 ? <p dangerouslySetInnerHTML={{ __html: InfoItem[1].infotext }} /> : ''}
           </div>
         </Col>
       </Row>
