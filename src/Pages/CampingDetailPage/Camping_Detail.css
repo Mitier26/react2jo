@@ -94,6 +94,10 @@
     align-items: center;
 }
 
+.phoneImage{
+    width: 30px;
+}
+
 @media (max-width:768px) {
     .DetailImage{
         width: 350px;

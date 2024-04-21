@@ -109,9 +109,6 @@ const MyPage = () => {
                     <div className='myPageUserImageBox'>
                         <img className='myPageUserImage' src={currentUser.photoURL} alt="User"/>
                     </div>
-                    <div className='ImageEditBox'>
-                      <button className='ImageEditBtn' onClick={handleOpenImage} >이미지 수정</button>
-                    </div>
                 </Row>
             </div>
             <Nav className='TabContainer' fill variant="tabs" defaultActiveKey="/home">
@@ -145,6 +142,9 @@ const MyPage = () => {
                   <div className='myInfoImageBox'>
                         <img className='myPageUserImage' src={currentUser.photoURL} alt="User"/>
                   </div>
+                  <div className='ImageEditBox'>
+                      <button className='ImageEditBtn' onClick={handleOpenImage} >이미지 수정</button>
+                    </div>
                   <div> 이메일 : {currentUser.email}</div>
                   <div> 닉네임 : {currentUser.displayName}</div>
               </Col>
