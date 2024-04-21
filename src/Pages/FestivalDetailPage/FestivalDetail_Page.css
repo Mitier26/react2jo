@@ -36,4 +36,16 @@
         width: auto;
         height: auto; /* 모바일에서 카드의 높이를 자동으로 조정 */
     }
+
+    .festivalDetailContainer{
+        padding:10px
+    }
+
+    .festivalDetailCardContainer{
+        height: 200px;
+    }
+    .festivalImage{
+        height: 100px;
+        object-fit: cover;
+    }
 }

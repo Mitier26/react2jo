@@ -41,6 +41,7 @@
     color: white;
     background-color: orange;
   }
+
   
   .pagination .page-link:hover {
     color: white;
@@ -49,4 +50,40 @@
   
   .festival-cursor {
     cursor: pointer;
+  
+
+  @media (max-width: 768px) {
+    .pagination {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+      }
+      
+      .pagination .page-item {
+        margin: 0 0.0.1rem;
+        
+      }
+      
+      .pagination .page-link {
+        color: orange;
+        background-color: white;
+        border: none;
+        padding: 0.0.4rem 1rem;
+        text-decoration: none;
+      }
+      
+      .pagination .page-item.active .page-link {
+        color: white;
+        background-color: orange;
+        width: 20px;
+        height: 25px;
+        display: flex;
+        list-style: none;
+        justify-content: center;
+      }
+      
+      .pagination .page-link:hover {
+        color: white;
+        background-color: orange;
+      }
   }

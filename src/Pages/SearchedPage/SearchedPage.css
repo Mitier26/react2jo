@@ -33,6 +33,10 @@
    background: orange;
 }
 
+.p-auto{
+   cursor: pointer;
+}
+
 @media (max-width: 768px) {
    .pagination {
       justify-content: center;
