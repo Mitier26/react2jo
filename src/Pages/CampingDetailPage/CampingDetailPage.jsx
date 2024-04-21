@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useCampingDetail } from '../../hooks/useCampingDetail';
 import { Container, Spinner, Alert, Badge } from 'react-bootstrap';
@@ -15,7 +15,10 @@ const CampingDetailPage = () => {
     const keyword = addr.get('keyword');
     const { data, isLoading, error, isError } = useCampingDetail({ params: id, keyword: keyword });
 
-    console.log(data);
+    useEffect(() => {
+        // 페이지가 로드될 때 스크롤을 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     if (isLoading) {
         return <div>{isLoadingSpinner()}</div>;
