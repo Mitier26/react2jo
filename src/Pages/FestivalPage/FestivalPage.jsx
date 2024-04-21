@@ -7,6 +7,7 @@ import { Container, Row, Col, Card, Pagination, Alert} from "react-bootstrap";
 import './FestivalPage.style.css';
 import noImage from "../../assets/noImage.png";
 import isLoadingSpinner from "../../common/Spinner/isLoadingSpinner"; 
+import { useNavigate } from "react-router-dom";
 
 const FestivalPage = () => {
   const [festivals, setFestivals] = useState([]);
@@ -14,6 +15,7 @@ const FestivalPage = () => {
   const [isError, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const festivalsPerPage = 8;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,8 +66,8 @@ const FestivalPage = () => {
       <h1 className="my-4">전국 축제 리스트</h1>
       <Row>
         {currentFestivals.map((festival, index) => (
-          <Col key={index} lg={3} md={6} className="mb-4">
-            <Card className="h-100">
+          <Col key={index} lg={3} md={6} className="mb-4" onClick={()=>navigate(`/festival/${festival.contentid}`)}>
+            <Card className="h-100 festival-cursor">
               <Card.Img
                 className='festivalImage'
                 variant="top"

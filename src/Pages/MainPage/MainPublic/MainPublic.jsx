@@ -23,7 +23,7 @@ const MainPublic = (data) => {
     }
 
   return (
-    <Container>
+    <Container className='mb-5'>
         <div className='public-area-title'>
             <spa className='public-container-title'>공공 기관 캠핑장</spa>
             {/* <span>여긴 어때?</span> */}

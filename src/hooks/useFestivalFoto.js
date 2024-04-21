@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import api from "../utils/tourApi"
 
 const fetchFestivalFoto = (id) => {
-    return api.get(`/detailCommon1?contentId=${id}&defaultYN=Y&firstImageYN=Y&overviewYN=Y`)
+    return api.get(`/detailCommon1?contentId=${id}&defaultYN=Y&firstImageYN=Y&overviewYN=Y&mapinfoYN=Y`)
 }
 
 export const useFestivalFoto = (id) =>{
