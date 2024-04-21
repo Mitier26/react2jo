@@ -27,9 +27,18 @@ const CampingDetailPage = () => {
         <Container>
             {data?.map((item) => (
                 <div key={item.id} className="DetailContainer">
-                    <div className="DetailImageContainer">
-                        <img src={item.firstImageUrl} alt="Camping Image" className="DetailImage" />
-                    </div>
+                    <tr key={item.id}>
+                            <td>
+                                <div className="DetailImageContainer">
+                                    <img src={item.firstImageUrl} alt="Camping Image" className="DetailImage" />
+                                </div>
+                            </td>
+                        </tr>
+                        <h3>{item.facltNm}</h3>
+                        <div>{item.addr1}</div>
+                        <div className="reservationBtn">
+                            <a href={item.homepage}>예약하러 가기</a>
+                        </div>
                     <div className="DetailInfoContainer">
                         <h4 className="DetailIntroTitle">어떤 장소인가요?</h4>
                         <div className="answerInfo">
