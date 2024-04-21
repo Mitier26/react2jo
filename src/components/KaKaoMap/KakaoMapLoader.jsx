@@ -456,6 +456,7 @@ const KakaoMapLoader = () => {
 
     return (
         <Container className='kakaoContainer'>
+            <div className='orange-bg'></div>
             <div className='kakaoTitle'>지도로 찾아볼까?</div>
             <div className="kakaoLoader">
                 {/* <input type="text" value={keyword} onChange={(event) => setKeyword(event.target.value)} />
