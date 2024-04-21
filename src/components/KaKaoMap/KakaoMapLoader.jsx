@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './KakaoMapLoader.style.css';
+import { Container } from 'react-bootstrap';
 const { kakao } = window;
 
 const KakaoMapLoader = () => {
@@ -454,62 +455,64 @@ const KakaoMapLoader = () => {
     };
 
     return (
-        <div className="kakaoLoader">
-            {/* <input type="text" value={keyword} onChange={(event) => setKeyword(event.target.value)} />
-            <button onClick={searchPlaces}>검색</button> */}
-
-            <div id="menu_wrap" className="bg_white">
-                <div className="option">
-                    <div>
-                        <form onSubmit={(event) => searchPlaces(event)}>
-                            {' '}
-                            <input
-                                type="text"
-                                id="keyword"
-                                size="15"
-                                onChange={(event) => setKeyword(event.target.value)}
-                            />
-                            <button type="submit">검색하기</button>
-                        </form>
+        <Container className='kakaoContainer'>
+            <div className='kakaoTitle'>지도로 찾아볼까?</div>
+            <div className="kakaoLoader">
+                {/* <input type="text" value={keyword} onChange={(event) => setKeyword(event.target.value)} />
+                <button onClick={searchPlaces}>검색</button> */}
+                <div id="menu_wrap" className="bg_white">
+                    <div className="option">
+                        <div>
+                            <form onSubmit={(event) => searchPlaces(event)}>
+                                {' '}
+                                <input
+                                    type="text"
+                                    id="keyword"
+                                    size="15"
+                                    onChange={(event) => setKeyword(event.target.value)}
+                                />
+                                <button type="submit">검색하기</button>
+                            </form>
+                        </div>
                     </div>
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
                 </div>
-                <ul id="placesList"></ul>
-                <div id="pagination"></div>
+                <div id="map" style={{ width: '100%', height: '100%' }}></div>
+                <ul id="category">
+                    <li id="BK9" data-order="0">
+                        <span class="category_bg bank"></span>
+                        은행
+                    </li>
+                    <li id="MT1" data-order="1">
+                        <span class="category_bg mart"></span>
+                        마트
+                    </li>
+                    <li id="PM9" data-order="2">
+                        <span class="category_bg pharmacy"></span>
+                        약국
+                    </li>
+                    <li id="OL7" data-order="3">
+                        <span class="category_bg oil"></span>
+                        주유소
+                    </li>
+                    <li id="CE7" data-order="4">
+                        <span class="category_bg cafe"></span>
+                        카페
+                    </li>
+                    <li id="CS2" data-order="5">
+                        <span class="category_bg store"></span>
+                        편의점
+                    </li>
+                </ul>
+                <p className='trafficInfo'>
+                    <input type="checkbox" id="chkTraffic" /> 교통정보 보기
+                    <input type="checkbox" id="chkBicycle" /> 자전거도로 정보 보기
+                </p>
+                <div id="clickLatlng"></div>
+                <div id="dragResult"></div>
             </div>
-            <div id="map" style={{ width: '100%', height: '100%' }}></div>
-            <ul id="category">
-                <li id="BK9" data-order="0">
-                    <span class="category_bg bank"></span>
-                    은행
-                </li>
-                <li id="MT1" data-order="1">
-                    <span class="category_bg mart"></span>
-                    마트
-                </li>
-                <li id="PM9" data-order="2">
-                    <span class="category_bg pharmacy"></span>
-                    약국
-                </li>
-                <li id="OL7" data-order="3">
-                    <span class="category_bg oil"></span>
-                    주유소
-                </li>
-                <li id="CE7" data-order="4">
-                    <span class="category_bg cafe"></span>
-                    카페
-                </li>
-                <li id="CS2" data-order="5">
-                    <span class="category_bg store"></span>
-                    편의점
-                </li>
-            </ul>
-            <p>
-                <input type="checkbox" id="chkTraffic" /> 교통정보 보기
-                <input type="checkbox" id="chkBicycle" /> 자전거도로 정보 보기
-            </p>
-            <div id="clickLatlng"></div>
-            <div id="dragResult"></div>
-        </div>
+            </Container>
     );
 };
 
