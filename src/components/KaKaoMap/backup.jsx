@@ -61,37 +61,6 @@ const KakaoMapLoader = () => {
             }
         });
     };
-
-    // 지도에 마커를 표시하는 함수
-    // const displayMarker = (places) => {
-    //     if (!map) return;
-    //     const bounds = new kakao.maps.LatLngBounds();
-    //     const newMarkers = [];
-
-    //     places.forEach((place) => {
-    //         const position = new kakao.maps.LatLng(place.y, place.x);
-    //         newMarkers.push({
-    //             position,
-    //             content: place.place_name,
-    //         });
-    //         bounds.extend(position);
-    //     });
-
-    //     newMarkers.forEach((markerInfo) => {
-    //         const marker = new kakao.maps.Marker({
-    //             map,
-    //             position: markerInfo.position,
-    //         });
-
-    //         kakao.maps.event.addListener(marker, 'click', function () {
-    //             infowindow.setContent('<div style="padding:5px;font-size:12px;">' + markerInfo.content + '</div>');
-    //             infowindow.open(map, marker);
-    //         });
-    //     });
-
-    //     map.setBounds(bounds);
-    // };
-
     // 지도에 필요한 컨트롤을 추가하는 함수
     const addMapControls = (map) => {
         var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -144,13 +113,6 @@ const KakaoMapLoader = () => {
         removeMarker();
 
         for (var i = 0; i < places.length; i++) {
-            var container = document.getElementById('map');
-            var option = {
-                center: new kakao.maps.LatLng(places.lat, places.lon),
-                level: 3, // 보이는 범위
-                isPanto: true, //부드럽게 이동
-            };
-            var map = new kakao.maps.Map(container, option);
             // 마커를 생성하고 지도에 표시합니다
             var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
                 marker = addMarker(placePosition, i),

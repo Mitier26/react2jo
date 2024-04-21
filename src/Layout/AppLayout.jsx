@@ -28,6 +28,7 @@ const AppLayout = ({ isLogged }) => {
         setKeyword('');
     };
 
+    // 로그아웃 모듈
     const handleLogout = () => {
         signOut(auth).then(() => {}).catch((err) => {
             console.error(err);

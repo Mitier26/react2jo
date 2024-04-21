@@ -11,7 +11,7 @@ import MainPublic from './MainPublic/MainPublic';
 import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 
 const MainPage = () => {
-    const {data:cardData,isLoading,isError,error} = useCampingAnimal();
+    const { data: cardData, isLoading, isError, error } = useCampingAnimal();
     if (isLoading) {
       return (
         <div>
@@ -20,15 +20,15 @@ const MainPage = () => {
       )
     }
     if (isError) {
-      return <Alert>{error.message}</Alert>
+        return <Alert>{error.message}</Alert>;
     }
     return (
         <div>
-            <MainBanner />
-            <MainAnimal cardData={cardData}/>
+            {/* <MainBanner /> */}
+            {/* <MainAnimal cardData={cardData}/> */}
             <KakaoMapLoader />
-            <MainPublic cardData={cardData}/>
-            <TourSlider />
+            {/* <MainPublic cardData={cardData}/> */}
+            {/* <TourSlider /> */}
             {/* <Map // 지도를 표시할 Container
                 id="map"
                 center={{
