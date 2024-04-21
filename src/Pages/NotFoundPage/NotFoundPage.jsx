@@ -6,7 +6,7 @@ import notFound from '../../assets/notFound.jpg'
 
 const NotFoundPage = () => {
    return (
-      <div className="wrap justify-content-center">
+      <div className="container">
          <img className="notfound-img" src={notFound} alt="NotFound img" />
          <Link to={'/'} className="btn-link">
             <Button className="home-button btn-warning">GO TO HOME</Button>

@@ -1,14 +1,6 @@
-.wrap {
-   background-size: contain;
-   margin: 0;
-   padding: 0;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-}
 .notfound-img {
    width: 100%;
-   height: 80vh;
+   height: 75vh;
 }
 .btn-link {
    display: flex;
