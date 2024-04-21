@@ -6,6 +6,7 @@ import '../CampingDetailPage/Camping_Detail.css';
 import dog from '../../assets/dog.png';
 import FestivalDetailPage from '../FestivalDetailPage/FestivalDetailPage';
 import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
+import phone from '../../assets/phone.png'
 
 
 const CampingDetailPage = () => {
@@ -86,9 +87,9 @@ const CampingDetailPage = () => {
                         <h4>기타 정보</h4>
                         <div className="EtcList">
                             <div>
-                                에약 방법 : {item.resveCl ? <>{item.resveCl}</> : '자세한 정보가 나와있지 않아요.'}
+                                예약 방법 : {item.resveCl ? <>{item.resveCl}</> : '자세한 정보가 나와있지 않아요.'}
                             </div>
-                            <div>전화번호 : {item.tel ? <>{item.tel}</> : '자세한 정보가 나와있지 않아요.'}</div>
+                            <div><img className='phoneImage' src={phone} />&nbsp;{item.tel ? <>{item.tel}</> : '자세한 정보가 나와있지 않아요.'}</div>
                         </div>
                     </div>
                     {item.mapX && item.mapY && (
