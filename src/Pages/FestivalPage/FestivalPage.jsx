@@ -1,53 +1,68 @@
 //FestivlaPage.jsx
 
-
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Container, Row, Col, Card, Pagination, Alert} from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Container, Row, Col, Card, Pagination, Alert } from 'react-bootstrap';
 import './FestivalPage.style.css';
-import noImage from "../../assets/noImage.png";
-import isLoadingSpinner from "../../common/Spinner/isLoadingSpinner"; 
-import { useNavigate } from "react-router-dom";
+import noImage from '../../assets/noImage.png';
+import isLoadingSpinner from '../../common/Spinner/isLoadingSpinner';
 import phone from '../../assets/phone.png';
+import { useNavigate } from 'react-router-dom';
 
 const FestivalPage = () => {
-  const [festivals, setFestivals] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const festivalsPerPage = 8;
-  const navigate = useNavigate();
-  const apiKey = process.env.REACT_APP_TOUR_API_KEY;
+    const [festivals, setFestivals] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [isError, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const festivalsPerPage = 8;
+    const apiKey = process.env.REACT_APP_TOUR_API_KEY;
+    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const url = `https://apis.data.go.kr/B551011/KorService1/searchFestival1?numOfRows=100&pageNo=1&MobileOS=WIN&MobileApp=Festival&_type=json&listYN=Y&arrange=D&eventStartDate=20100101&eventEndDate=20240420&serviceKey=${apiKey}`;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = `https://apis.data.go.kr/B551011/KorService1/searchFestival1?numOfRows=100&pageNo=1&MobileOS=WIN&MobileApp=Festival&_type=json&listYN=Y&arrange=D&eventStartDate=20100101&eventEndDate=20240420&serviceKey=${apiKey}`;
+                const response = await axios.get(url);
+                const { data } = response;
+                const {
+                    response: {
+                        body: {
+                            items: { item },
+                        },
+                    },
+                } = data;
 
-        const response = await axios.get(url);
-        const { data } = response;
-        const { response: { body: { items: { item } } } } = data;
+                if (Array.isArray(item) && item.length > 0) {
+                    setFestivals(item);
+                } else {
+                    setError('No festivals found');
+                }
 
-        if (Array.isArray(item) && item.length > 0) {
-          setFestivals(item);
-        } else {
-          setError("No festivals found");
-        }
+                setLoading(false);
+            } catch (error) {
+                setError('Failed to fetch festivals');
+                setLoading(false);
+            }
+        };
 
-        setLoading(false);
-      } catch (error) {
-        setError("Failed to fetch festivals");
-        setLoading(false);
-      }
+        fetchData();
+    }, []);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
     };
 
-    fetchData();
-  }, []);
+    const indexOfLastFestival = currentPage * festivalsPerPage;
+    const indexOfFirstFestival = indexOfLastFestival - festivalsPerPage;
+    const currentFestivals = festivals.slice(indexOfFirstFestival, indexOfLastFestival);
 
+    if (isLoading) {
+        return isLoadingSpinner();
+    }
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    if (isError) {
+        return <Alert variant="danger">{isError}</Alert>;
+    }
 
 
   const indexOfLastFestival = currentPage * festivalsPerPage;
