@@ -262,8 +262,13 @@ const KakaoMapLoader = () => {
                     displayInfowindow(marker, title);
                 });
 
-                kakao.maps.event.addListener(marker, 'mouseout', function () {
-                    infowindow.close();
+                // kakao.maps.event.addListener(marker, 'mouseout', function () {
+                //     infowindow.close();
+                // });
+
+                // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    displayClickInputWindow(marker, title);
                 });
 
                 itemEl.onmouseover = function () {
@@ -320,7 +325,38 @@ const KakaoMapLoader = () => {
     // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
     // 인포윈도우에 장소명을 표시합니다
     const displayInfowindow = (marker, title) => {
-        var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+        var content = '<div style="padding:5px;z-index:1;">' + title.place_name + '</div>';
+
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+    };
+
+    function closeOverlay() {
+        infowindow.close(); // 닫힘 버튼 클릭 시 인포윈도우를 닫도록 수정
+    }
+
+    const displayClickInputWindow = (marker, title) => {
+        var content =
+            '<div class="wrap">' +
+            '    <div class="info">' +
+            '        <div class="title">' +
+            title.place_name +
+            '        </div>' +
+            '        <div class="body">' +
+            '            <div class="desc">' +
+            '                <div class="ellipsis">' +
+            title.address_name +
+            '</div>' +
+            '                <div class="jibun ellipsis">' +
+            title.road_address_name +
+            '</div>' +
+            '                <div><a href="' +
+            title.place_url +
+            '" target="_blank" class="link">홈페이지</a></div>' +
+            '            </div>' +
+            '        </div>' +
+            '    </div>' +
+            '</div>';
 
         infowindow.setContent(content);
         infowindow.open(map, marker);
