@@ -71,7 +71,7 @@ const FestivalInfoPage = () => {
           </div>
         </Col>
       </Row>
-      {fotoItem?(fotoItem[0].mapx && fotoItem[0].mapy && <FestivalDetailPage key={fotoItem[0].contentid} mapX={fotoItem[0].mapx} mapY={fotoItem[0].mapy} />):''}
+      {/* {fotoItem?(fotoItem[0].mapx && fotoItem[0].mapy && <FestivalDetailPage key={fotoItem[0].contentid} mapX={fotoItem[0].mapx} mapY={fotoItem[0].mapy} />):''} */}
     </Container>
   )
 }
