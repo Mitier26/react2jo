@@ -1,7 +1,59 @@
-.camping-card-text {
+.card {
+   border: 5px solid #ffbb70;
+   border-radius: 10px 10px 10px 10px;
+}
+
+.camping-card-img {
+   border-radius: 5px 5px 0 0;
+   height: 20rem;
+}
+
+.camping-card-title {
+   font-size: 1.5rem;
+   font-weight: 800;
+}
+.card-body {
+   min-height: 15rem;
+   background-color: #faf8f1;
+}
+
+.camping-card-text p:first-child {
+   font-weight: 500;
+   margin-top: 1rem;
+   margin-bottom: 0.5rem;
+}
+.camping-card-text p:last-child {
+   font-size: 0.9rem;
+   color: rgb(74, 74, 78);
    overflow: hidden;
    text-overflow: ellipsis;
    display: -webkit-box;
    -webkit-line-clamp: 5;
    -webkit-box-orient: vertical;
+}
+
+.card > .list-group {
+   border-top: none;
+}
+.info-badge {
+   background-color: #e37b31 !important;
+}
+.list-group-flush .list-group-item:first-child {
+   font-size: 0.9rem;
+}
+
+.list-group-flush .list-group-item:nth-child(2) {
+   min-height: 8rem;
+}
+.list-group-flush .list-group-item:nth-child(2) p {
+   padding-top: 10px;
+   margin-bottom: 5px;
+}
+
+.list-group-flush .list-group-item:nth-child(2) a {
+   color: black;
+   text-decoration: none;
+}
+.list-group-flush .list-group-item:last-child {
+   min-height: 4rem;
 }
