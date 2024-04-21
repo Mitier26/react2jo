@@ -24,11 +24,11 @@ const MainPage = () => {
     }
     return (
         <div>
-            {/* <MainBanner /> */}
-            {/* <MainAnimal cardData={cardData}/> */}
+            <MainBanner />
+            <MainAnimal cardData={cardData}/>
             <KakaoMapLoader />
-            {/* <MainPublic cardData={cardData}/> */}
-            {/* <TourSlider /> */}
+            <MainPublic cardData={cardData}/>
+            <TourSlider />
             {/* <Map // 지도를 표시할 Container
                 id="map"
                 center={{
