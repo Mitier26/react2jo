@@ -10,20 +10,20 @@ import { Alert } from 'react-bootstrap';
 import MainPublic from './MainPublic/MainPublic';
 
 const MainPage = () => {
-    const {data:cardData,isLoading,isError,error} = useCampingAnimal();
+    const { data: cardData, isLoading, isError, error } = useCampingAnimal();
     if (isLoading) {
-      return <h1>loading</h1>
+        return <h1>loading</h1>;
     }
     if (isError) {
-      return <Alert>{error.message}</Alert>
+        return <Alert>{error.message}</Alert>;
     }
     return (
         <div>
-            <MainBanner />
-            <MainAnimal cardData={cardData}/>
+            {/* <MainBanner /> */}
+            {/* <MainAnimal cardData={cardData}/> */}
             <KakaoMapLoader />
-            <MainPublic cardData={cardData}/>
-            <TourSlider />
+            {/* <MainPublic cardData={cardData}/> */}
+            {/* <TourSlider /> */}
             {/* <Map // 지도를 표시할 Container
                 id="map"
                 center={{
