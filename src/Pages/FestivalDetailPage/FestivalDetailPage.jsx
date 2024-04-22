@@ -39,6 +39,17 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
         };
     }, [appAuth]);
 
+    const handleFestivalDetail = (festival) => {
+
+        console.log(festival);
+        if (festival !== undefined) {
+            navigate(`/festival/${festival.contentid}`);
+        } else {
+            navigate(`/festival`);
+            alert('죄송해요 해당축제는 정보가 존재하지 않습니다.')
+        }
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -102,9 +113,13 @@ const FestivalDetailPage = ({ mapX, mapY }) => {
                             <Row>
                                 {chunk.map((festival, festivalIndex) => (
                                     <Col key={festivalIndex} lg={4} md={6} className="mb-4">
-                                        <Card className='festivalDetailCardContainer'>
-                                            {festival.firstimage && (
-                                                <Card.Img className='festivalImage'
+                                        <Card
+                                            className='festivalDetailCardContainer'
+                                            onClick={() => handleFestivalDetail(festival)}
+                                        >
+                                            {festival && festival.firstimage && (
+                                                <Card.Img
+                                                    className='festivalImage'
                                                     variant="top"
                                                     src={festival.firstimage}
                                                     alt="Festival Image"

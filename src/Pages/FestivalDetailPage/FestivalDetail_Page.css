@@ -28,7 +28,9 @@
     height: 40px; /* 아이콘 크기 조정 */
     border-radius: 30px;
 }
-
+.festivalDetailCardContainer{
+    cursor: pointer;
+}
 
 
 @media (max-width: 768px) {

@@ -15,7 +15,6 @@ const TourSlider = () => {
     };
     const { data, isLoading, isError, error } = useFestivalQuery(getToday());
 
-    console.log(data);
     if (isLoading) {
         return <Spinner animation="border" variant="warning" />;
     }
